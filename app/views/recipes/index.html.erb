@@ -1,4 +1,3 @@
-<h1>Searching for - <%= @search_term %></h1>
 
 <% if @recipes.nil? %>
 
@@ -7,15 +6,10 @@
 <%else%>
 
 <table>
-	<tr>
-		<th>Image</th>
-		<th>Title</th>
-		<td>Rank</td>
-	</tr>
 	<% @recipes.each do |recipe| %>
 		<tr class=<%= cycle('even', 'odd')%> >
 			<td><%= link_to(image_tag(recipe['image_url']), recipe['source_url'], nil) %></td>
-			<td><%= sanitize(link_to(recipe['title'], recipe['source_url'], nil)) %></td>
+			<td><%= link_to(recipe['title'], recipe['source_url'], nil) %></td>
 			<td><%= recipe['social_rank'] %></td>
 		</tr>
 	<% end %>
